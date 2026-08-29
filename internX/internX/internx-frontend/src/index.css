@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF9F6;
+    color: #1F1F29;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Category Left Color Strips */
+  .category-strip-tech {
+    border-left: 5px solid #2E2A6B;
+  }
+  .category-strip-design {
+    border-left: 5px solid #FF6B5E;
+  }
+  .category-strip-marketing {
+    border-left: 5px solid #1FAE8B;
+  }
+  .category-strip-data {
+    border-left: 5px solid #0EA5E9;
+  }
+  .category-strip-finance {
+    border-left: 5px solid #F59E0B;
+  }
+  .category-strip-default {
+    border-left: 5px solid #6B6B7B;
+  }
+
+  /* Pill Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-accent text-white font-medium shadow-soft hover:bg-accent-hover hover:shadow-coral-glow transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-transparent border-2 border-primary text-primary font-medium hover:bg-primary-50 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-full text-slateSub hover:text-primary hover:bg-surface-muted transition-all duration-200;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-medium shadow-soft hover:bg-primary-800 transition-all duration-200 active:scale-[0.98];
+  }
+
+  /* Floating Label Input Group (Pure CSS for PostCSS compatibility) */
+  .floating-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .floating-input {
+    display: block;
+    width: 100%;
+    padding: 1.25rem 1rem 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #1F1F29;
+    background-color: #FFFFFF;
+    border: 1px solid #E8E6DF;
+    border-radius: 0.75rem;
+    appearance: none;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .floating-input:focus {
+    outline: none;
+    border-color: #2E2A6B;
+    box-shadow: 0 0 0 3px rgba(46, 42, 107, 0.12);
+  }
+
+  .floating-label {
+    position: absolute;
+    font-size: 0.875rem;
+    color: #6B6B7B;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    pointer-events: none;
+    transform-origin: 0 0;
+    transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  }
+
+  .floating-input:focus ~ .floating-label,
+  .floating-input:not(:placeholder-shown) ~ .floating-label {
+    transform: translateY(-0.75rem) scale(0.75);
+    color: #2E2A6B;
+  }
+
+  /* Tags & Badges */
+  .mono-badge {
+    @apply font-mono text-xs uppercase tracking-wider px-2.5 py-1 rounded-full font-semibold;
+  }
+
+  /* Card Base */
+  .card-soft {
+    @apply bg-white rounded-2xl border border-surface-border shadow-soft hover:shadow-soft-hover transition-all duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF9F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D2CEEF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7E72C8;
+}

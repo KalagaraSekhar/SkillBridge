@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # User Service Auth & Profile Routes
+        - id: user-service-auth
+          uri: lb://user-service
+          predicates:
+            - Path=/api/auth/**, /api/users/**
+
+        # Internship Service Routes
+        - id: internship-service
+          uri: lb://internship-service
+          predicates:
+            - Path=/api/internships/**
+
+        # Application Service Routes
+        - id: application-service
+          uri: lb://application-service
+          predicates:
+            - Path=/api/applications/**
+
+        # Company Service Routes
+        - id: company-service
+          uri: lb://company-service
+          predicates:
+            - Path=/api/companies/**
+
+        # Admin Service / Aggregator Routes
+        - id: admin-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/admin/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
